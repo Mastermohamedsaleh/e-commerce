@@ -11,7 +11,11 @@ class CategoryController extends Controller
  
     public function index()
     {
-        return view('categories.index');
+
+ 
+        $categories = Category::latest()->paginate(PAGINATE_COUNT);
+
+        return view('categories.index',compact('categories'));
     }
 
    
@@ -38,7 +42,7 @@ class CategoryController extends Controller
         ]);
 
                      
-        session()->flash('status', 'added_successfully');
+        session()->flash('status', 'added successfully');
         return redirect()->route('categories.index');
 
 
@@ -54,17 +58,45 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        //
+     
+        $category = Category::findOrfail($id);
+
+        return view('categories.edit',compact('category'));
+
+
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request , $id)
     {
-        //
+        
+        $category = Category::findOrfail($id);
+        $category->update([
+            'name'=>$request->name,
+            'slug'=>$request->slug,
+            'description'=>$request->description,
+            'status'=>$request->status  == True ? '1' : '0' ,
+            'popular'=>$request->popular == True ? '1' : '0' ,
+            'meta_title'=>$request->meta_title,
+            'meta_keywords'=> $request->meta_keywords,
+            'meta_discrip'=>$request->meta_discrip, 
+        ]);
+                     
+        session()->flash('status', 'Udpate successfully');
+        return redirect()->route('categories.index');
+
     }
 
     public function destroy($id)
     {
-        //
+         
+       
+         $category =  Category::findorfail($id);
+         
+         $category->delete();
+         
+         session()->flash('status', 'Delete successfully');
+         return redirect()->route('categories.index');
+
     }
 }

@@ -3,6 +3,30 @@
 
 @section('content')
 
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<div class="card-header">
+<h2 class="text-center text-primary">Add Category</h2>
+
+</div>
+<!-- end card header -->
+
+
+
+<div class="card-body">
+
+
+
+
 <form action="{{route('categories.store')}}" method="post">
     @csrf
 <!-- Start Row -->
@@ -70,10 +94,6 @@
 </div>
 
 
-<div class="col-md-6 mt-2">
-<label for="">Meta Description</label>
-<input type="text" class="form-control" name="meta_description" placeholder="Meta Description">
-</div>
 
 <div class="col-md-6 mt-2">
 <button class="btn btn-primary">Add</button>
@@ -85,6 +105,29 @@
 
 </div><!-- End Row -->
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!-- end card body -->
+
+
+
+</div>
+<!-- End Card -->
+
+
+
 
 
 

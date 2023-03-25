@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Frontend\FrontController;
 
 
 
@@ -17,14 +19,18 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+define('PAGINATE_COUNT' , 5);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/',[HomeController::class,'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/', [frontController::class, 'index']);
 
 
 Route::middleware(['auth','admincheck'])->group(function(){
@@ -34,5 +40,6 @@ Route::middleware(['auth','admincheck'])->group(function(){
 
 
     Route::resource('categories',CategoryController::class);
+    Route::resource('products',ProductController::class);
 
 });

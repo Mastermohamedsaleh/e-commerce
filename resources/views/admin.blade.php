@@ -34,6 +34,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('admin/css/material-dashboard.css?v=3.0.4')}}" rel="stylesheet" />
+  <link  href="{{asset('admin/css/style.css')}}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
