@@ -35,9 +35,36 @@ E-Shop
         <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            @foreach($categories  as $category)
+            <li><a class="dropdown-item" href="{{url('category/'.$category->slug)}}">{{$category->name}}</a></li>
+            @endforeach
+          </ul>
+        </li>
+
+
+
+
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
+
+
+
+
+
+
+
+   
+
+
+
+
       </ul>
     </div>
   </div>
@@ -97,7 +124,6 @@ E-Shop
 
 
 
-
 <div class="row">
 @foreach($products as $product)
 
@@ -105,9 +131,25 @@ E-Shop
 
 
 <div class="card" style="width: 100%;">
-<img src="{{asset('uploads/products/'.$product->image)}}" alt="" style = "width:100%">
+<img src="{{asset('uploads/products/'.$product->image)}}" alt="" style = "width:100% ; height:300px">
   <div class="card-body">
    {{$product->name}}
+
+   <div class="row">
+
+<div class="col">
+    {{$product->selling_price}}
+</div><!-- end col  -->
+
+<div class="col">
+ <s> {{$product->original_price}}</s>
+</div> <!-- end col  -->
+
+
+   </div>   <!-- end Row  --> 
+
+
+
   </div>
 </div>
 

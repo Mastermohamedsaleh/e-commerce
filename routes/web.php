@@ -33,6 +33,17 @@ Auth::routes();
 Route::get('/', [frontController::class, 'index']);
 
 
+Route::controller(FrontController::class)->group(function() { 
+ 
+ Route::get('category/{slug}' , 'category' );
+ Route::get('category/{cate_slug}/{prod_slug}' , 'product' );
+   
+   
+});
+
+
+
+
 Route::middleware(['auth','admincheck'])->group(function(){
     Route::get('/dashboard',function(){
       return view('admin');
