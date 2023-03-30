@@ -17,10 +17,7 @@ class FrontController extends Controller
 
         $products = Product::where('trending' , 1)->take(15)->get(); 
 
- 
-        $categories = Category::all();
-
-        return view('frontend.index',compact('products','categories'));
+        return view('frontend.index',compact('products'));
     } 
 
 
@@ -50,15 +47,14 @@ class FrontController extends Controller
       
           
         if(Category::where('slug',$cate_slug)->exists()){
-
- 
             if(Product::where('slug',$prod_slug)->exists()){
-               $product = Product::where('slug',$prod_slug)->first();
+                $product = Product::where('slug',$prod_slug)->first();
+              
+
                 return view('frontend.products.view',compact('product'));
             }else{
                 return redirect('/');
             }  //end if 
-
         }else{
             return redirect('/');
         } //end if 

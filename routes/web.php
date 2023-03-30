@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Frontend\FrontController;
-
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -18,6 +19,8 @@ use App\Http\Controllers\Frontend\FrontController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 
 define('PAGINATE_COUNT' , 5);
@@ -44,6 +47,24 @@ Route::controller(FrontController::class)->group(function() {
 
 
 
+
+// Cart 
+
+Route::controller(CartController::class)->group(function(){
+  Route::post('/add-to-cart','addtocart');
+  Route::get('/viewcart', 'viewcart');
+  // Delete Item From Cart
+  Route::post('delete-in-cart/{id}', 'delete_item');
+});
+
+
+
+// Checkout
+
+Route::get('checkout',[CheckoutController::class , 'checkout']);
+
+
+
 Route::middleware(['auth','admincheck'])->group(function(){
     Route::get('/dashboard',function(){
       return view('admin');
@@ -54,3 +75,6 @@ Route::middleware(['auth','admincheck'])->group(function(){
     Route::resource('products',ProductController::class);
 
 });
+
+
+ 
