@@ -67,6 +67,8 @@ E-Shop
 
   
 
+<form action="{{url('placeorder')}}" method="post">
+@csrf
  
 <div class="row">
 
@@ -83,6 +85,8 @@ E-Shop
  
 <hr>
 
+
+
 <div class="col-md-6">
  
 
@@ -98,11 +102,11 @@ E-Shop
 
 <div class="col-md-6">
 <label for="">Address 1</label>
-<input type="text" name="Address_1" class="form-control" placeholder="Address 1">
+<input type="text" name="address_1" class="form-control" placeholder="Address 1">
 </div><!--end col -->
 <div class="col-md-6">
 <label for="">Address 2</label>
-<input type="text" name="Address_2" class="form-control" placeholder="Address 2">
+<input type="text" name="address_2" class="form-control" placeholder="Address 2">
 </div><!--end col -->
 
 
@@ -153,7 +157,7 @@ E-Shop
  
 
 
-<div class="card shadow p-2">
+<div class="card shadow p-2 mt-2">
 
 <h5>Order Details</h5>
 
@@ -173,7 +177,7 @@ E-Shop
 
 
 
-
+@if($items)
  
 @foreach($items as $item)
 
@@ -203,9 +207,19 @@ E-Shop
 
 <hr>
 
-<button class="btn btn-primary  w-100  text-center">Checkout</button>
 
 
+<button type="submit"  class="btn btn-primary  w-100  text-center">Place Order</button>
+
+@else
+
+<td>no order</td>
+
+
+@endif
+
+
+</form>
 </div> <!--End card-body -->
 
 

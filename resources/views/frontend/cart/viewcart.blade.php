@@ -146,6 +146,7 @@ E-Shop
    @endforeach
 </table>
 
+
  <div class="text-center">
  <h5> Total Price : {{$total}} </h5>
 

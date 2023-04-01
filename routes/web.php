@@ -61,8 +61,13 @@ Route::controller(CartController::class)->group(function(){
 
 // Checkout
 
-Route::get('checkout',[CheckoutController::class , 'checkout']);
+Route::controller(CheckoutController::class)->group(function(){
 
+Route::get('checkout', 'checkout');
+Route::post('placeorder' , 'placeorder');
+
+
+});
 
 
 Route::middleware(['auth','admincheck'])->group(function(){
