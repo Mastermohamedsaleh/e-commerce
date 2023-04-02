@@ -14,7 +14,7 @@
           <a class="nav-link" href="{{url('viewcart')}}">My Cart</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{{url('all_my_order')}}">My Order</a>
         </li>
 
         <li class="nav-item dropdown">

@@ -15,13 +15,13 @@ class CategoryController extends Controller
  
         $categories = Category::latest()->paginate(PAGINATE_COUNT);
 
-        return view('categories.index',compact('categories'));
+        return view('admins.categories.index',compact('categories'));
     }
 
    
     public function create()
     {
-        return view('categories.create');
+        return view('admins.categories.create');
     }
 
   
@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
                      
         session()->flash('status', 'added successfully');
-        return redirect()->route('categories.index');
+        return redirect()->route('admins.categories.index');
 
 
 
@@ -61,7 +61,7 @@ class CategoryController extends Controller
      
         $category = Category::findOrfail($id);
 
-        return view('categories.edit',compact('category'));
+        return view('admins.categories.edit',compact('category'));
 
 
     }
@@ -83,7 +83,7 @@ class CategoryController extends Controller
         ]);
                      
         session()->flash('status', 'Udpate successfully');
-        return redirect()->route('categories.index');
+        return redirect()->route('admins.categories.index');
 
     }
 
@@ -96,7 +96,7 @@ class CategoryController extends Controller
          $category->delete();
          
          session()->flash('status', 'Delete successfully');
-         return redirect()->route('categories.index');
+         return redirect()->route('admins.categories.index');
 
     }
 }

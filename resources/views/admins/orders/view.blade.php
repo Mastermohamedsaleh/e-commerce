@@ -1,41 +1,7 @@
-@extends('layouts.frontend')
-
-
-@section('title')
-
-E-Shop
-
-@endsection
-
-
-
+@extends('admin')
 
 
 @section('content')
-
-
-
-
-
-
-
-
-
-
-
-<!-- Start navbar -->
-
-@include('frontend.nav')
-
-<!-- end Slider -->
-
-
-
-
-
-
-   
-
 
 
 
@@ -61,7 +27,7 @@ E-Shop
 
 </div><!-- end card-header -->
 
-<a href="{{url('all_my_order')}}" class="float-end  btn btn-warning">Back</a>
+<a href="{{url('orders')}}" class="float-end  btn btn-warning">Back</a>
 
 <div class="card-body">
 
@@ -161,8 +127,19 @@ E-Shop
 
 
 
+<form action="{{url('update_status_order',$order->id)}}" method="post">
 
+@csrf
 
+<select class="form-select mt-5"  name="status" aria-label="Default select example">
+   <label for="">Order Status</label>
+  <option {{$order->status == '0' ? 'selected' : ''}} value="0">Pending</option>
+  <option {{$order->status == '1' ? 'selected' : ''}} value="1">Compleated</option>
+</select>
+
+<button type="submit" class="btn btn-primary mt-3">Update</button>
+
+</form>
 
 
 

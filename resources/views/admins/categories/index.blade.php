@@ -19,7 +19,7 @@
       <th scope="col">#</th>
       <th scope="col">name</th>
       <th scope="col">slug</th>
-      <th scope="col">description</th>
+  
       <th scope="col">status</th>
       <th scope="col">popular</th>
       <th scope="col">meta_title</th>
@@ -38,7 +38,7 @@
       <th scope="row">{{ $index + 1 }}</th>
       <td>{{ $category->name }}</td>
       <td>{{ $category->slug }}</td>
-      <td>{{ $category->description }}</td>
+
       <td>{{ $category->status }}</td>
       <td>{{ $category->popular }}</td>
       <td>{{ $category->meta_title }}</td>

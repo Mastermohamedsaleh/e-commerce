@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $products = Product::latest()->paginate(PAGINATE_COUNT);
 
-        return view('products.index',compact('products'));
+        return view('admins.products.index',compact('products'));
 
     }
 
@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('products.create' , compact('categories')); 
+        return view('admins.products.create' , compact('categories')); 
     }
 
  
@@ -66,7 +66,7 @@ class ProductController extends Controller
 
                      
         session()->flash('status', 'added successfully');
-        return redirect()->route('products.index');
+        return redirect()->route('admins.products.index');
          
  
          
@@ -84,7 +84,7 @@ class ProductController extends Controller
 
         $product = Product::findOrfail($id);
 
-        return view('products.edit',compact('product','categories'));
+        return view('admins.products.edit',compact('product','categories'));
 
     }
 
@@ -129,7 +129,7 @@ class ProductController extends Controller
 
                      
         session()->flash('status', 'Update successfully');
-        return redirect()->route('products.index');
+        return redirect()->route('admins.products.index');
          
         
          
@@ -149,6 +149,6 @@ class ProductController extends Controller
 
         $product->delete();
         session()->flash('status', 'Delete successfully');
-        return redirect()->route('products.index');
+        return redirect()->route('admins.products.index');
     }
 }

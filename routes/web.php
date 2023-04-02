@@ -6,7 +6,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 
 /*
@@ -23,13 +25,12 @@ use App\Http\Controllers\CartController;
 
 
 
-define('PAGINATE_COUNT' , 5);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/',[HomeController::class,'index']);
+
+
+define('PAGINATE_COUNT' , 1 );
+
 
 Auth::routes();
 
@@ -45,6 +46,37 @@ Route::controller(FrontController::class)->group(function() {
 });
 
 
+
+// Order User
+
+Route::controller(UserController::class)->group(function(){ 
+
+  // View all My Order To user
+  Route::get('all_my_order','index');
+
+  // View What he requried
+  Route::get('vieworder/{id}','vieworder');
+
+});
+
+
+
+// Order Admin
+
+
+Route::controller(OrderController::class)->group(function(){ 
+
+ 
+  // Show All Orders
+  Route::get('orders','index');
+
+  Route::get('view_to_order/{id}','vieworder');
+
+  Route::post('update_status_order/{id}','updatestatus');
+
+ 
+
+});
 
 
 
