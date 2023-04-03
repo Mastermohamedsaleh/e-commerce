@@ -120,7 +120,7 @@ E-Shop
 
 
 
-<form  action="{{url('add-to-cart')}}"  method= "post" style="display:inline-block"  > 
+<form    method= "post" style="display:inline-block"  > 
    @csrf
 
    <input type="hidden" name="product_id" class="product_id" value="{{$product->id}}">
@@ -132,11 +132,14 @@ E-Shop
        <div class="error_quatity text-danger"></div>
 </div>
 
-<button  type="submit"  class="btn btn-primary">Add To Cart</button>
+<button   type="submit" formaction="{{url('add-to-cart')}}" class="btn btn-primary">Add To Cart</button>
+
+
+<button   type="submit" formaction="{{url('add-to-wishlist')}}" class="btn btn-success">Add To Wishlist <i class="fa fa-heart"></i></button>
+
 </form>
 
 
-<button class="btn btn-success">Add To Wishlist <i class="fa fa-heart"></i></button>
 
 </div> <!-- end col -->
 

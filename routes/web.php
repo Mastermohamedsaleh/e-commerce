@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 
@@ -61,8 +62,23 @@ Route::controller(UserController::class)->group(function(){
 
 
 
-// Order Admin
 
+// Wishlist
+
+// Route group
+Route::middleware('auth')->group(function () {
+  Route::get('/wishlist', [WishlistController::class, 'index']);
+  Route::post('/add-to-wishlist', [WishlistController::class, 'add']);
+  Route::post('/delete-from-wishlist/{id}', [WishlistController::class, 'delete']);
+  // Count wishlist
+
+});
+
+Route::get('/load-wishlist-data', [WishlistController::class, 'countwishlist']);
+
+
+
+// Order Admin
 
 Route::controller(OrderController::class)->group(function(){ 
 
@@ -85,6 +101,8 @@ Route::controller(OrderController::class)->group(function(){
 Route::controller(CartController::class)->group(function(){
   Route::post('/add-to-cart','addtocart');
   Route::get('/viewcart', 'viewcart');
+  // Count Item in Cart
+  Route::get('/load-cart-data', 'cartcount');
   // Delete Item From Cart
   Route::post('delete-in-cart/{id}', 'delete_item');
 });

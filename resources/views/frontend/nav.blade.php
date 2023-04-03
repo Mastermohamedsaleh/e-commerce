@@ -8,23 +8,29 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link {{Request::is('/') ?  'active' : '' }}" aria-current="page" href="{{url('/')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('viewcart')}}">My Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('all_my_order')}}">My Order</a>
+          <a class="nav-link {{Request::is('viewcart') ?  'active' : '' }}" href="{{url('viewcart')}}">My Cart <span class="countcart"></span>   </a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item">
+          <a class="nav-link {{Request::is('wishlist') ?  'active' : '' }}" href="{{url('wishlist')}}">Wishlist <span class="countwishlist" ></span></a>
+        </li> 
+
+        <li class="nav-item">
+          <a class="nav-link {{Request::is('all_my_order') ?  'active' : '' }} " href="{{url('all_my_order')}}">My Order</a>
+        </li>
+
+
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle {{Request::is('category/') ?  'active' : '' }}" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Categories
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
            <?php  $categories = App\models\Category::all(); ?>
             @foreach(  $categories  as $category)
-            <li><a class="dropdown-item" href="{{url('category/'.$category->slug)}}">{{$category->name}}</a></li>
+            <li><a class="dropdown-item {{Request::is('category/'.$category->slug) ?  'active' : '' }}" href="{{url('category/'.$category->slug)}}">{{$category->name}}</a></li>
             @endforeach
           </ul>
         </li>
@@ -32,9 +38,6 @@
 
 
 
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
 
 
 

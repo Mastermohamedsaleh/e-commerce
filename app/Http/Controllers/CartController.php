@@ -86,9 +86,13 @@ class CartController extends Controller
           return redirect()->back();
         } // End if To check if login or not
 
- 
 
+      }
 
+     //Count Item in cart 
+      public function cartcount(){ 
+        $countcount =  Cart::where('user_id',Auth::id())->count();       
+        return response()->json(['count'=>$countcount]);
       }
 
 }
