@@ -176,12 +176,15 @@ E-Shop
 </tr>
 
 
+<?php $total_price = 0;  ?>
 
 @if($items)
  
+
 @foreach($items as $item)
 
 <tr>
+
 
 
 <td>{{$item->product->name}}</td>
@@ -189,8 +192,10 @@ E-Shop
 <td>{{$item->product->selling_price}}</td>
 
 
+
 </tr> 
 
+<?php $total_price +=  $item->product->selling_price * $item->quantity ;  ?>
 
 @endforeach
 
@@ -202,14 +207,20 @@ E-Shop
 
 
 
+
 </table>
 
-
+ <h6 class="text-primary">Total Price :  <span><?php echo $total_price; ?></span> </h6> 
 <hr>
 
 
 
-<button type="submit"  class="btn btn-primary  w-100  text-center">Place Order</button>
+<button type="submit"  class="btn btn-primary  w-100  text-center">Place Order | COD</button>
+<a href="{{url('payment',$total_price)}}"  class="btn btn-success mt-3  w-100  text-center">Payment</a>
+
+<div class="mt-3">
+<div id="paypal-button-container"></div>
+</div>
 
 @else
 
@@ -261,5 +272,12 @@ E-Shop
 </div>
 
 
+
+@section('scripts')
+
+
+
+
+@endsection
 
 @endsection

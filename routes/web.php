@@ -8,8 +8,10 @@ use App\Http\Controllers\Frontend\FrontController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -71,9 +73,8 @@ Route::middleware('auth')->group(function () {
   Route::post('/add-to-wishlist', [WishlistController::class, 'add']);
   Route::post('/delete-from-wishlist/{id}', [WishlistController::class, 'delete']);
   // Count wishlist
-
 });
-
+ 
 Route::get('/load-wishlist-data', [WishlistController::class, 'countwishlist']);
 
 
@@ -118,6 +119,28 @@ Route::post('placeorder' , 'placeorder');
 
 
 });
+
+
+
+// Payment
+
+Route::get( 'payment/{total_price}',[PaymentController::class , 'index']);
+// Route::get( 'payment.post',[PaymentController::class , 'post'])->name('payment.post');
+
+Route::get('successpayment',[PaymentController::class,'success'])->name('successpayment');
+Route::get('canclepayment',[PaymentController::class,'cancle'])->name('canclepayment');
+
+
+
+
+
+// Rating
+
+
+
+Route::post('rating',[RatingController::class ,  'add']);
+
+
 
 
 Route::middleware(['auth','admincheck'])->group(function(){
