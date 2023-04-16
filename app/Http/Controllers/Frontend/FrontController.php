@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Review;
 
 
 class FrontController extends Controller
@@ -15,9 +16,15 @@ class FrontController extends Controller
     public function index(){
 
 
-        $products = Product::where('trending' , 1)->take(15)->get(); 
+        $products = Product::where('trending' , 1)->take(8)->get(); 
 
-        return view('frontend.index',compact('products'));
+
+        $new_products =  Product::orderBy('id', 'DESC')->take(8)->get();
+
+        $categories =  Category::take(6)->get();
+
+
+        return view('frontend.frontend',compact('products','new_products','categories'));
     } 
 
 
@@ -49,9 +56,9 @@ class FrontController extends Controller
         if(Category::where('slug',$cate_slug)->exists()){
             if(Product::where('slug',$prod_slug)->exists()){
                 $product = Product::where('slug',$prod_slug)->first();
-              
+                 $reviews = Review::where('product_id',$product->id)->get();
 
-                return view('frontend.products.view',compact('product'));
+                return view('frontend.products.view',compact('product','reviews'));
             }else{
                 return redirect('/');
             }  //end if 

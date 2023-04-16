@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -129,6 +130,22 @@ Route::get( 'payment/{total_price}',[PaymentController::class , 'index']);
 
 Route::get('successpayment',[PaymentController::class,'success'])->name('successpayment');
 Route::get('canclepayment',[PaymentController::class,'cancle'])->name('canclepayment');
+
+
+
+// Review   
+
+
+Route::middleware(['auth'])->group(function(){
+
+  Route::controller(ReviewController::class)->group(function(){
+       Route::get('add-review/{product_slug}','add');
+       Route::post('create-review','create');
+       Route::get('edit-review/{product_slug}','edit');
+       Route::post('update-review','update');
+  });
+
+});
 
 
 

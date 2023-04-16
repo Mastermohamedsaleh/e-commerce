@@ -66,7 +66,7 @@ class ProductController extends Controller
 
                      
         session()->flash('status', 'added successfully');
-        return redirect()->route('admins.products.index');
+        return redirect()->route('products.index');
          
  
          

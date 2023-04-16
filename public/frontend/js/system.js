@@ -15,7 +15,7 @@ $(document).ready(function(){
            if(response.count == 0) {
             $('.countcart').html(''); 
            }else{
-            $('.countcart').html(`<span class="bg-primary p-1 rounded text-light countcart">${response.count}</span>`);
+            $('.countcart').html(`<span class="pro-count blue  countcart">${response.count}</span>`);
            }
             }   
          });  // Load to count item in cart  
@@ -35,7 +35,7 @@ $(document).ready(function(){
      if(response.count == 0){
       $('.countwishlist').html('');
      }else{
-        $('.countwishlist').html(`<span class="bg-success p-1 rounded text-light countwishlist">${response.count}</span>`);
+        $('.countwishlist').html(`<span class="pro-count blue  countwishlist">${response.count}</span>`);
     }
             }   
          }); // Load to count item in wishlist

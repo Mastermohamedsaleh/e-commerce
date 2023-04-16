@@ -1,39 +1,3 @@
-@extends('layouts.frontend')
-
-
-@section('title')
-
-E-Shop
-
-@endsection
-
-
-
-
-
-@section('content')
-
-
-
-
-
-
-
-
-
-
-
-<!-- Start navbar -->
-
-@include('frontend.nav')
-
-<!-- end Slider -->
-
-
-
-
-
-
 
 <nav class="navbar navbar-light  bg-warning">
   <div class="container">
@@ -55,6 +19,20 @@ E-Shop
      
   </div>
 </nav>
+
+
+
+
+<!-- Start navbar -->
+
+@include('frontend.layouts.nav')
+
+<!-- end Slider -->
+
+
+
+
+
 
 
 
@@ -116,9 +94,10 @@ E-Shop
 
 @endif
   
+
   
- 
 
 
 
 </div>
+
