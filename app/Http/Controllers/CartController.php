@@ -57,7 +57,6 @@ class CartController extends Controller
         $items = Cart::where('user_id',Auth::id())->get();
         return view("frontend.cart.viewcart" , compact('items'));
           
- 
 
       }
 

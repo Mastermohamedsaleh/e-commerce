@@ -43,7 +43,7 @@ class CategoryController extends Controller
 
                      
         session()->flash('status', 'added successfully');
-        return redirect()->route('admins.categories.index');
+        return redirect()->route('categories.index');
 
 
 
@@ -83,7 +83,7 @@ class CategoryController extends Controller
         ]);
                      
         session()->flash('status', 'Udpate successfully');
-        return redirect()->route('admins.categories.index');
+        return redirect()->route('categories.index');
 
     }
 
@@ -96,7 +96,7 @@ class CategoryController extends Controller
          $category->delete();
          
          session()->flash('status', 'Delete successfully');
-         return redirect()->route('admins.categories.index');
+         return redirect()->route('categories.index');
 
     }
 }

@@ -1,17 +1,4 @@
-@extends('layouts.frontend')
 
-
-@section('title')
-
-E-Shop
-
-@endsection
-
-
-
-
-
-@section('content')
 
 
 
@@ -25,7 +12,7 @@ E-Shop
 
 <!-- Start navbar -->
 
-@include('frontend.nav')
+@include('frontend.layouts.nav')
 
 <!-- end Slider -->
 
@@ -35,26 +22,6 @@ E-Shop
 
 
 
-<nav class="navbar navbar-light  bg-warning">
-  <div class="container">
-    <span class="navbar-brand mb-0 h1">E-Shop</span>
-
-
-  
-<h6 class="mb-0">
-    <a href="{{url('/')}}">Home</a> /
-    <a href="{{url('viewcart')}}">Cart</a>
-
-</h6>
-
-
-   
-      
-
-
-     
-  </div>
-</nav>
 
 
 
@@ -181,4 +148,4 @@ E-Shop
 
 
 
-@endsection
+@include('frontend.layouts.footer')

@@ -1,23 +1,9 @@
-@extends('layouts.frontend')
-
-
-@section('title')
-
-E-Shop
-
-@endsection
-
-
-
-
-
-@section('content')
 
 
 
 <!-- Start navbar -->
 
-@include('frontend.nav')
+@include('frontend.layouts.nav')
 
 <!-- end Slider -->
 
@@ -32,9 +18,9 @@ E-Shop
 
 
    <div class="card">
-<div class="card-header bg-primary text-light rounded text-center">
+<div class="card-header bg-danger  rounded text-center">
   
- <h6>You are write a review for {{$product_slug}}</h6>  
+ <h5 class="text-light">You are write a review for {{$product_slug}}</h5>  
   
 </div>
 
@@ -100,4 +86,4 @@ E-Shop
 
 
 
-@endsection
+@include('frontend.layouts.footer')

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class FrontController extends Controller
@@ -23,8 +26,10 @@ class FrontController extends Controller
 
         $categories =  Category::take(6)->get();
 
+        $items = Cart::where('user_id',Auth::id())->get();
+     
 
-        return view('frontend.frontend',compact('products','new_products','categories'));
+        return view('frontend.frontend',compact('products','new_products','categories','items'));
     } 
 
 

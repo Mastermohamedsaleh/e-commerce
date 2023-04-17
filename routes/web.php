@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
+use App\Http\Controllers\Frontend\AccountController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
@@ -47,6 +48,17 @@ Route::controller(FrontController::class)->group(function() {
  Route::get('category/{cate_slug}/{prod_slug}' , 'product' );
    
    
+});
+
+
+
+
+// Change my account
+
+Route::controller(AccountController::class)->group(function(){ 
+Route::get('my_account', 'index');
+Route::post('update_account', 'update');
+
 });
 
 
