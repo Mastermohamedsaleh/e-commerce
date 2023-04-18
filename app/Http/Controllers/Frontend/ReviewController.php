@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
+
+
+
+
     public function add($product_slug){
         
 
@@ -24,16 +28,20 @@ class ReviewController extends Controller
              
             $product_id  = $product_check->id;
  
+
+
+            // Only customer prushed can write review
             $verified_purchase = Order::where('orders.user_id' , Auth::id())
             ->join('order_items','orders.id','order_items.order_id')
             ->where('order_items.product_id',$product_id)->get();
+            // Only customer prushed can write review
               
 
             return view('frontend.reviews.index',compact('product_slug','product_check','verified_purchase'));
 
         }else{
 
-            return redirect()->back()->with('status','The link you followed was broken');
+            return redirect()->back()->with(['status'=>'The link you followed was broken']);
         }
 
 
@@ -65,8 +73,8 @@ class ReviewController extends Controller
         $product_slug = $product->slug;
 
         if($user_review){
-            return redirect()->route('category/'.$category_slug.'/'.$product_slug)->with('status','Thank you for writing a review');
-        } // this code not work
+            return redirect('category/'.$category_slug.'/'.$product_slug)->with(['status'=>'Thank you for writing a review']);
+        } 
 
 
     

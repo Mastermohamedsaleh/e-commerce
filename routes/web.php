@@ -45,7 +45,7 @@ Route::get('/', [frontController::class, 'index']);
 Route::controller(FrontController::class)->group(function() { 
  
  Route::get('category/{slug}' , 'category' );
- Route::get('category/{cate_slug}/{prod_slug}' , 'product' );
+ Route::get('category/{cate_slug}/{prod_slug}' , 'product' )->name('category/{cate_slug}/{prod_slug}');
    
    
 });

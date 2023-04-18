@@ -22,6 +22,10 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/custom.css')}}">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 
 <body>
@@ -143,6 +147,11 @@
                                     <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                          <ul>
                                             <?php  $total = 0;  ?>
+
+                                            <?php    $items = App\Models\Cart::where('user_id',Auth::id())->get();     ?>
+            
+                                            @if($items)
+
                                @foreach($items as $item)
                                             <li>
                                                 <div class="shopping-cart-img">
@@ -159,6 +168,8 @@
                                             
                                             <?php  $total  += $item->product->selling_price * $item->quantity ; ?>
                                 @endforeach
+
+                                @endif
                                         </ul>
                                         <div class="shopping-cart-footer">
                                             <div class="shopping-cart-total">

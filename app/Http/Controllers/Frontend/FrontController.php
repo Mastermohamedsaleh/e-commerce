@@ -26,18 +26,15 @@ class FrontController extends Controller
 
         $categories =  Category::take(6)->get();
 
-        $items = Cart::where('user_id',Auth::id())->get();
      
 
-        return view('frontend.frontend',compact('products','new_products','categories','items'));
+        return view('frontend.frontend',compact('products','new_products','categories'));
     } 
 
 
  
     public function category($slug){
                    
-
-
         if(Category::where('slug',$slug)->exists()){
             $category = Category::where('slug',$slug)->first();
             $products = Product::where('category_id' , $category->id)->where('status' , '0')->get();
@@ -56,12 +53,11 @@ class FrontController extends Controller
 
 
     public function product($cate_slug , $prod_slug){
-      
-          
+        
         if(Category::where('slug',$cate_slug)->exists()){
             if(Product::where('slug',$prod_slug)->exists()){
                 $product = Product::where('slug',$prod_slug)->first();
-                 $reviews = Review::where('product_id',$product->id)->get();
+                 $reviews = Review::where('product_id',$product->id)->take(8)->get();
 
                 return view('frontend.products.view',compact('product','reviews'));
             }else{

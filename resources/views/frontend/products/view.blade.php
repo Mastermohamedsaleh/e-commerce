@@ -70,6 +70,10 @@
 
 
 
+
+    
+
+
  
 <div class="row">
 
@@ -166,8 +170,7 @@
        <div class="error_quatity text-danger"></div>
 </div>
 
-<button   type="submit" formaction="{{url('add-to-cart')}}" class="btn btn-primary">Add To Cart</button>
-
+<button   type="submit" formaction="{{url('add-to-cart')}}" class="btn btn-primary">Add To Cart <i class="fa fa-cart-plus"></i></button>
 
 <button   type="submit" formaction="{{url('add-to-wishlist')}}" class="btn btn-success">Add To Wishlist <i class="fa fa-heart"></i></button>
 
@@ -199,11 +202,12 @@
 <div class="row">
     <div class="col">
     <a type="button"   data-bs-toggle="modal" data-bs-target="#rating">
-     Rating Product
+     Rating Product   
 </a>
 
 <a href="{{url('add-review',$product->slug)}}"  > Write a Review</a>
     </div>  <!--end col one -->
+
 
 
 
@@ -216,7 +220,8 @@
 
 @if($review->user_id == Auth::id())
  
-    <a href="{{url('edit-review',$product->slug)}}" >edit</a>
+   
+    <a href="{{url('edit-review',$product->slug)}}" >edit    </a>
  
 @endif
 
@@ -376,78 +381,49 @@
                                         <!--Comments-->
                                         <div class="comments-area">
                                             <div class="row">
+                                            
                                                 <div class="col-lg-8">
                                                     <h4 class="mb-30">Customer questions & answers</h4>
+                                                   
                                                     <div class="comment-list">
+                                                    
                                                         <div class="single-comment justify-content-between d-flex">
+                                                        <?php  foreach($reviews as $review): ?>
                                                             <div class="user justify-content-between d-flex">
                                                                 <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-6.jpg" alt="">
-                                                                    <h6><a href="#">Jacky Chan</a></h6>
-                                                                    <p class="font-xxs">Since 2012</p>
+                                                                    <img src="{{ asset('uploads/users/'.$review->users->image )}}" alt="">
+                                                                    <h6><a href="#">{{$review->users->name}}</a></h6>
+                                                                    <p class="font-xxs">Since {{$review->created_at->year}}</p>
                                                                 </div>
+                                                                <?php
+                                                                   $rating = App\Models\Rating::where('user_id',Auth::id())->where('product_id',$review->product_id)->first();
+                                                            
+                                                                    ?>
+                                                                <?php if($rating): ?>
                                                                 <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
+                                                                    <div class=" d-inline-block">
+                                                                        <div  style="width:100%">
+                                                                         @for($i =  1 ; $i <= $rating->stars ; $i++ )
+                                                                                <i class="fa fa-star text-warning"></i>
+                                                                           @endfor
+                                                                          @for($j = $rating->stars+1 ; $j <= 5 ; $j++ )
+                                                                          <i class="fa fa-star"></i>   
+                                                                          @endfor
                                                                         </div>
                                                                     </div>
-                                                                    <p>Thank you very fast shipping from Poland only 3days.</p>
+                                                                    <?php endif; ?>
+                                                                    <p>{{$review->user_review}}.</p>
                                                                     <div class="d-flex justify-content-between">
                                                                         <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                            <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
+                                                                            <p class="font-xs mr-30">{{$review->created_at->format('d-M-Y g:i:s A' ) }} </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <?php  endforeach; ?>
                                                         </div>
-                                                        <!--single-comment -->
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-7.jpg" alt="">
-                                                                    <h6><a href="#">Ana Rosie</a></h6>
-                                                                    <p class="font-xxs">Since 2008</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Great low price and works well.</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                            <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="assets/imgs/page/avatar-8.jpg" alt="">
-                                                                    <h6><a href="#">Steven Keny</a></h6>
-                                                                    <p class="font-xxs">Since 2010</p>
-                                                                </div>
-                                                                <div class="desc">
-                                                                    <div class="product-rate d-inline-block">
-                                                                        <div class="product-rating" style="width:90%">
-                                                                        </div>
-                                                                    </div>
-                                                                    <p>Authentic and Beautiful, Love these way more than ever expected They are Great earphones</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                            <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!--single-comment -->
+                                              
+                                                    
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
