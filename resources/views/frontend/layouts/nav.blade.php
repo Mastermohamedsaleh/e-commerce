@@ -23,6 +23,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 
+<!-- Auto Complate Jquery To Search -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -123,8 +126,10 @@
                     </div>
                     <div class="header-right">
                         <div class="search-style-1">
-                            <form action="#">                                
-                                <input type="text" placeholder="Search for items...">
+                            <form action="{{url('searchproduct')}}" method="post" autocomplete="off">    
+                                @csrf                            
+                                <input type="text" name="search" id="search" class="search" placeholder="Search for items..." >
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                         <div class="header-action-right">
@@ -428,17 +433,7 @@
                                     <li><a href="blog.html">Blog </a></li>                                    
                                     <li><a href="{{url('my_account')}}">Account</a></li>
                                 
-                                    <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="#">Dashboard</a></li>
-                                            <li><a href="#">Products</a></li>
-                                            <li><a href="#">Categories</a></li>
-                                            <li><a href="#">Coupons</a></li>
-                                            <li><a href="#">Orders</a></li>
-                                            <li><a href="#">Customers</a></li>
-                                            <li><a href="#">Logout</a></li>                                            
-                                        </ul>
-                                    </li>
+                            
                                 </ul>
                             </nav>
                         </div>

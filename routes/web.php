@@ -51,15 +51,34 @@ Route::controller(FrontController::class)->group(function() {
 });
 
 
+// Search product
+
+
+Route::controller(FrontController::class)->group(function() { 
+
+  Route::get('product-list' , 'productlist')->name('product-list');
+  Route::post('searchproduct' , 'searchproduct')->name('searchproduct');
+
+
+
+});
+
+
+
+
 
 
 // Change my account
+Route::middleware(['auth'])->group(function(){ 
 
-Route::controller(AccountController::class)->group(function(){ 
-Route::get('my_account', 'index');
-Route::post('update_account', 'update');
+  Route::get('my_account',  [AccountController::class , 'index']);
+Route::post('update_account', [AccountController::class , 'update']);
 
 });
+
+
+
+
 
 
 

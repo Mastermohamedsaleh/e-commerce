@@ -139,7 +139,10 @@
 
 
 
+<!-- Auto Complate Jquery To Search -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+<!-- Sweetalerte  -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
@@ -152,6 +155,36 @@ swal("{{ session('status') }}");
 
 </script>
 @endif
+
+
+<script>
+
+    var availableTags = [];
+
+
+    $.ajax({
+        method: 'GET',
+        url: '/product-list',
+        success:function(response){
+            // startAutoComplete(response);
+            startAutoComplete(response);
+        }
+ 
+
+    });
+
+ 
+
+    function startAutoComplete(availableTags){
+        $("#search").autocomplete({
+              source: availableTags
+        });
+    }
+
+ 
+  </script>
+
+
 
 
 

@@ -211,32 +211,175 @@
 
 
 
-
-<div class="col">
-@foreach($reviews as $review)
-
-<label for="">{{$review->users->name}}</label>
+<!-- ///////////////////////////////////////////////////////////////// -->
 
 
-@if($review->user_id == Auth::id())
+
+
+<div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                        <div class="detail-extralink">
+                                            <div class="detail-qty border radius">
+                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                                <span class="qty-val">1</span>
+                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                            </div>
+
+                            <!-- //////////// -->
+                            <div class="tab-style3">
+                                <ul class="nav nav-tabs text-uppercase">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                    </li>
+                            
+
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content shop_info_tab entry-main-content">
+                                    <div class="tab-pane fade show active" id="Description">
+
+                                        <div class="">
+                                            <p>{{$product->description}}</p>
+                                       
+                                        </div>
+                                    </div>
+                                   
+
+
+
+
+
+                                    <div class="tab-pane fade" id="Reviews">
+                                        <!--Comments-->
+                                        <div class="comments-area">
+                                            <div class="row">
+                                            
+                                                <div class="col-lg-8">
+                                                    <h4 class="mb-30">Customer questions & answers</h4>
+                                                    <?php  foreach($reviews as $review): ?>
+                                                    <div class="comment-list">
+                                                 
+                                                        <div class="single-comment justify-content-between d-flex">
+                                                     
+
+
+
+
+
+                                                            <div class="user justify-content-between d-flex">
+                                                          
+                                                                <div class="thumb text-center">
+                                                                    <img src="{{ asset('uploads/users/'.$review->users->image )}}" alt="">
+                                                                    <h6><a href="#">{{$review->users->name}}</a></h6>
+                                                                    <p class="font-xxs">Since {{$review->created_at->year}}</p>
+                                                                </div>
+                                                                <?php
+                                                                   $rating = App\Models\Rating::where('user_id',$review->users->id)->where('product_id',$review->product_id)->first();
+                                                            
+                                                                    ?>
+                                                                <?php if($rating): ?>
+                                                                <div class="desc">
+                                                                    <div class=" d-inline-block">
+                                                                        <div  style="width:100%">
+                                                                         @for($i =  1 ; $i <= $rating->stars ; $i++ )
+                                                                                <i class="fa fa-star text-warning"></i>
+                                                                           @endfor
+                                                                          @for($j = $rating->stars+1 ; $j <= 5 ; $j++ )
+                                                                          <i class="fa fa-star"></i>   
+                                                                          @endfor
+                                                                        </div>
+                                                                    </div>
+                                                                    <?php endif; ?>
+                                                                    <p>
+                                                                        {{$review->user_review}}. 
+                                                                          
+                                                                        @if($review->user_id == Auth::id())
  
    
-    <a href="{{url('edit-review',$product->slug)}}" >edit    </a>
- 
-@endif
+                                                                    <a href="{{url('edit-review',$product->slug)}}" class="text-primary" >edit</a>
 
-<br>
+                                                                         @endif 
+                                                                    </p>
+                                                                    <div class="d-flex justify-content-between">
+                                                                        <div class="d-flex align-items-center">
+                                                                            <p class="font-xs mr-30">{{$review->created_at->format('d-M-Y g:i:s A' ) }} </p>
+                                                                        </div>
+                                                                   
+                                                                    </div>
+                                                                 
+                                                                </div>
+                                                            </div>
+                                                     
+                                                        </div>
+                                              
+                                                        <?php  endforeach; ?>
+                                                    
+                                                    </div>
+                                                 
+                                                </div>
+                                               
+                                            
 
-<small>Review on {{ $review->created_at->format('d M Y') }}</small>
+                                                <div class="col-lg-4">
 
-<br>
+                                                    <h4 class="mb-30">Customer reviews</h4>
+                                                    <div class="d-flex mb-30">
+                                                        <div class="product-rate d-inline-block mr-15">
+                                                            <div class="product-rating" style="width:90%">
+                                                            </div>
+                                                        </div>
+                                                        <h6>4.8 out of 5</h6>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <span>5 star</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <span>4 star</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <span>3 star</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <span>2 star</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
+                                                    </div>
+                                                    <div class="progress mb-30">
+                                                        <span>1 star</span>
+                                                        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                                                    </div>
+                                                    <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
 
-<p>
-  {{$review->user_review}}
-</p>
 
 
- @endforeach
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col">
+
 </div> <!--end col two -->
 
 
@@ -321,185 +464,6 @@
 
 
 
-<div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                        <div class="detail-extralink">
-                                            <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
-
-                            <!-- //////////// -->
-                            <div class="tab-style3">
-                                <ul class="nav nav-tabs text-uppercase">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
-                                    </li>
-                            
-
-                                    
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content shop_info_tab entry-main-content">
-                                    <div class="tab-pane fade show active" id="Description">
-                                        <div class="">
-                                            <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending and much yikes off far quetzal goodness and from for grimaced goodness unaccountably and meadowlark near unblushingly crucial scallop
-                                                tightly neurotic hungrily some and dear furiously this apart.</p>
-                                            <p>Spluttered narrowly yikes left moth in yikes bowed this that grizzly much hello on spoon-fed that alas rethought much decently richly and wow against the frequent fluidly at formidable acceptably flapped
-                                                besides and much circa far over the bucolically hey precarious goldfinch mastodon goodness gnashed a jellyfish and one however because.
-                                            </p>
-                                            <ul class="product-more-infor mt-30">
-                                                <li><span>Type Of Packing</span> Bottle</li>
-                                                <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
-                                                <li><span>Quantity Per Case</span> 100ml</li>
-                                                <li><span>Ethyl Alcohol</span> 70%</li>
-                                                <li><span>Piece In One</span> Carton</li>
-                                            </ul>
-                                            <hr class="wp-block-separator is-style-dots">
-                                            <p>Laconic overheard dear woodchuck wow this outrageously taut beaver hey hello far meadowlark imitatively egregiously hugged that yikes minimally unanimous pouted flirtatiously as beaver beheld above forward
-                                                energetic across this jeepers beneficently cockily less a the raucously that magic upheld far so the this where crud then below after jeez enchanting drunkenly more much wow callously irrespective limpet.</p>
-                                            <h4 class="mt-30">Packaging & Delivery</h4>
-                                            <hr class="wp-block-separator is-style-wide">
-                                            <p>Less lion goodness that euphemistically robin expeditiously bluebird smugly scratched far while thus cackled sheepishly rigid after due one assenting regarding censorious while occasional or this more crane
-                                                went more as this less much amid overhung anathematic because much held one exuberantly sheep goodness so where rat wry well concomitantly.
-                                            </p>
-                                            <p>Scallop or far crud plain remarkably far by thus far iguana lewd precociously and and less rattlesnake contrary caustic wow this near alas and next and pled the yikes articulate about as less cackled dalmatian
-                                                in much less well jeering for the thanks blindly sentimental whimpered less across objectively fanciful grimaced wildly some wow and rose jeepers outgrew lugubrious luridly irrationally attractively
-                                                dachshund.
-                                            </p>
-                                        </div>
-                                    </div>
-                                   
-
-
-
-
-
-                                    <div class="tab-pane fade" id="Reviews">
-                                        <!--Comments-->
-                                        <div class="comments-area">
-                                            <div class="row">
-                                            
-                                                <div class="col-lg-8">
-                                                    <h4 class="mb-30">Customer questions & answers</h4>
-                                                   
-                                                    <div class="comment-list">
-                                                    
-                                                        <div class="single-comment justify-content-between d-flex">
-                                                        <?php  foreach($reviews as $review): ?>
-                                                            <div class="user justify-content-between d-flex">
-                                                                <div class="thumb text-center">
-                                                                    <img src="{{ asset('uploads/users/'.$review->users->image )}}" alt="">
-                                                                    <h6><a href="#">{{$review->users->name}}</a></h6>
-                                                                    <p class="font-xxs">Since {{$review->created_at->year}}</p>
-                                                                </div>
-                                                                <?php
-                                                                   $rating = App\Models\Rating::where('user_id',Auth::id())->where('product_id',$review->product_id)->first();
-                                                            
-                                                                    ?>
-                                                                <?php if($rating): ?>
-                                                                <div class="desc">
-                                                                    <div class=" d-inline-block">
-                                                                        <div  style="width:100%">
-                                                                         @for($i =  1 ; $i <= $rating->stars ; $i++ )
-                                                                                <i class="fa fa-star text-warning"></i>
-                                                                           @endfor
-                                                                          @for($j = $rating->stars+1 ; $j <= 5 ; $j++ )
-                                                                          <i class="fa fa-star"></i>   
-                                                                          @endfor
-                                                                        </div>
-                                                                    </div>
-                                                                    <?php endif; ?>
-                                                                    <p>{{$review->user_review}}.</p>
-                                                                    <div class="d-flex justify-content-between">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <p class="font-xs mr-30">{{$review->created_at->format('d-M-Y g:i:s A' ) }} </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <?php  endforeach; ?>
-                                                        </div>
-                                              
-                                                    
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <h4 class="mb-30">Customer reviews</h4>
-                                                    <div class="d-flex mb-30">
-                                                        <div class="product-rate d-inline-block mr-15">
-                                                            <div class="product-rating" style="width:90%">
-                                                            </div>
-                                                        </div>
-                                                        <h6>4.8 out of 5</h6>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>5 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>4 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>3 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                                                    </div>
-                                                    <div class="progress">
-                                                        <span>2 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                                    </div>
-                                                    <div class="progress mb-30">
-                                                        <span>1 star</span>
-                                                        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                                    </div>
-                                                    <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--comment form-->
-                                        <div class="comment-form">
-                                            <h4 class="mb-15">Add a review</h4>
-                                            <div class="product-rate d-inline-block mb-30">
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-8 col-md-12">
-                                                    <form class="form-contact comment_form" action="#" id="commentForm">
-                                                        <div class="row">
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-12">
-                                                                <div class="form-group">
-                                                                    <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <button type="submit" class="button button-contactForm">Submit
-                                                                Review</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
 
 
@@ -537,8 +501,6 @@
 
 
 
-
-
 @section('scripts')
 
 
@@ -563,6 +525,18 @@
 
 
 @include('frontend.layouts.footer')
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

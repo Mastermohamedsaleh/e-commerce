@@ -1,33 +1,23 @@
-@extends('layouts.frontend')
-
-
-@section('title')
-
-E-Shop
-
-@endsection
-
-
-
-
-
-@section('content')
-
-
-
-
-
-
-
 
 
 
 
 <!-- Start navbar -->
 
-@include('frontend.nav')
+@include('frontend.layouts.nav')
 
 <!-- end Slider -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -207,4 +197,3 @@ E-Shop
 </div>
 
 
-@endsection
