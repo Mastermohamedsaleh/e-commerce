@@ -1,38 +1,20 @@
 
-<nav class="navbar navbar-light  bg-warning">
-  <div class="container">
-    <span class="navbar-brand mb-0 h1">E-Shop</span>
-
-
-  
-<h6 class="mb-0">
-    <a href="{{url('/')}}">Home</a> /
-    <a href="{{url('all_my_order')}}">My Order</a>
-
-</h6>
-
-
-   
-      
-
-
-     
-  </div>
-</nav>
 
 
 
 
-<!-- Start navbar -->
+
+
+
+
+
+
+
+
+
+
 
 @include('frontend.layouts.nav')
-
-<!-- end Slider -->
-
-
-
-
-
 
 
 
@@ -43,7 +25,7 @@
 <div class="container mt-5">
 
 
-
+<div>
  
 <table class="table table-striped shadow">
   
@@ -100,4 +82,17 @@
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 

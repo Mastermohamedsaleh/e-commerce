@@ -41,14 +41,18 @@
                 <div class="row align-items-center">
                     <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
-                        <ul>
-                                <li>
-                                    <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
-                                    <ul class="language-dropdown">
-                                        <li><a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-fr.png')}}" alt="">Français</a></li>
-                                        <li><a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-dt.png')}}" alt="">Deutsch</a></li>
-                                        <li><a href="#"><img src="{{ asset('frontend/assets/imgs/theme/flag-ru.png')}}" alt="">Pусский</a></li>
-                                    </ul>
+                   
+
+          <!-- WhatsApp -->
+         
+<a href="https://wa.me/01117861776?text=I'm%20interested%20in%20your%20car%20for%20sale"  target="_blank">
+<img src="{{asset('frontend/assets/imgs/WhatsApp/WhatsApp.png')}}" alt="" style="width:40px ; height:40px;">
+             </a>
+
+          <!--End WhatsApp -->
+
+
+
                                 </li>                                
                             </ul>
                         </div>
@@ -432,14 +436,20 @@
                                     </li>
                                     <li><a href="blog.html">Blog </a></li>                                    
                                     <li><a href="{{url('my_account')}}">Account</a></li>
-                                
+                              
+
+  
+
+                             
                             
                                 </ul>
                             </nav>
                         </div>
                     </div>
                     <div class="hotline d-none d-lg-block">
-                        <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000 </p>
+                        <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000   
+                    
+                    </p>
                     </div>
                     <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
                     <div class="header-action-right d-block d-lg-none">

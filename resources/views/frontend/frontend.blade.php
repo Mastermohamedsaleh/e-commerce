@@ -27,6 +27,9 @@
 
 
 
+
+
+
     <div class="mobile-header-active mobile-header-wrapper-style">
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
@@ -66,6 +69,10 @@
                             </ul>
                         </div>
                     </div>
+
+
+
+
                     <!-- mobile menu start -->
                     <nav>
                         <ul class="mobile-menu">
@@ -123,8 +130,9 @@
                         <a href="register.html">Sign Up</a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="#">(+1) 0000-000-000 </a>
+                        <a href="#">(+1) 0000-000-000</a>
                     </div>
+
                 </div>
                 <div class="mobile-social-icon">
                     <h5 class="mb-15 text-grey-4">Follow Us</h5>
@@ -136,7 +144,13 @@
                 </div>
             </div>
         </div>
-    </div>        
+    </div>   
+    
+    
+
+
+
+
     <main class="main">
         <section class="home-slider position-relative pt-50">
             <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
@@ -181,6 +195,11 @@
                     </div>
                 </div>                
             </div>
+
+
+
+
+
             <div class="slider-arrow hero-slider-1-arrow"></div>
         </section>
         <section class="featured section-padding position-relative">
@@ -225,6 +244,7 @@
                 </div>
             </div>
         </section>
+
    
 
 
@@ -338,6 +358,12 @@
         </section>
         
     </main>
+
+
+
+
+
+
 
 
     @include('frontend.layouts.footer')

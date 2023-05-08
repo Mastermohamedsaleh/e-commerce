@@ -158,6 +158,7 @@
 
 
 
+
 <form    method= "post" style="display:inline-block"  > 
    @csrf
 
@@ -165,16 +166,22 @@
 
 
 
-<div class="input-group text-center mb-3">
-       <input type="number" name="qty"  value="1" max="10" min="1" class="quantity">
-       <div class="error_quatity text-danger"></div>
+<div class="input-group text-center mb-3">               
+        <input type="number" name="qty" class="qty"  value="1" max="10" min="1" class="quantity">
 </div>
 
-<button   type="submit" formaction="{{url('add-to-cart')}}" class="btn btn-primary">Add To Cart <i class="fa fa-cart-plus"></i></button>
+<div>
 
-<button   type="submit" formaction="{{url('add-to-wishlist')}}" class="btn btn-success">Add To Wishlist <i class="fa fa-heart"></i></button>
+<button   type="submit" formaction="{{url('add-to-cart')}}" class="btn btn-primary addcart">Add To Cart <i class="fa fa-cart-plus"></i></button>
+
+<button   type="submit" formaction="{{url('add-to-wishlist')}}" class="btn btn-success"  >Add To Wishlist <i class="fa fa-heart"></i></button>
+
+</div>
+
 
 </form>
+
+
 
 
 
@@ -216,13 +223,7 @@
 
 
 
-<div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                        <div class="detail-extralink">
-                                            <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                            </div>
+
 
                             <!-- //////////// -->
                             <div class="tab-style3">
@@ -502,6 +503,8 @@
 
 
 @section('scripts')
+
+
 
 
 

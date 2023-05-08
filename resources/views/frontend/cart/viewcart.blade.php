@@ -35,7 +35,9 @@
 
 
 
-<table class="table table-striped text-center shadow">
+
+
+<table class="table table-striped text-center shadow ">
   
 
 
@@ -53,6 +55,10 @@
  
     <?php  $total = 0 ?>
 
+    <!-- <form action="{{url('checkout')}}" method="post"> -->
+
+
+    <!-- @csrf -->
 
     @foreach($items as $item)
     <tr>
@@ -65,11 +71,32 @@
     </tr>
 
 
+      
+       <!-- <input type="hidden"   name="product_id" value = "{{$item->product_id}}" > -->
+
+
+
+
+
+
+
+
+
 
  
      
 
 
+
+    <div class="text-center">
+
+
+<a  href="{{url('checkout')}}" class="btn btn-outline-success">Proceed to Checkout</a>
+
+
+</div>
+
+<!-- </form> -->
 
 
 
@@ -104,7 +131,9 @@
 </div>
 
 
-<?php      $total  += $item->product->selling_price * $item->quantity;   ?>
+<?php   
+  //  $total  += $item->product->selling_price * $item->quantity;  
+    ?>
 
 
 
@@ -114,13 +143,15 @@
 </table>
 
 
- <div class="text-center">
- <h5> Total Price : {{$total}} </h5>
-
-  <a href="{{url('checkout')}}" class="btn btn-outline-success">Proce</a>
 
 
- </div>
+
+
+
+
+
+ 
+
  
  
   

@@ -67,8 +67,12 @@
             var qtyval = parseInt($(this).find('.qty-val').text(), 10);
             $('.qty-up').on('click', function (event) {
                 event.preventDefault();
-                qtyval = qtyval + 1;
-                $(this).prev().text(qtyval);
+
+                if( qtyval  < 10 ){
+                    qtyval = qtyval + 1;
+                    $(this).prev().text(qtyval);
+                }
+         
             });
             $('.qty-down').on('click', function (event) {
                 event.preventDefault();
@@ -81,6 +85,70 @@
                 }
             });
         });
+
+
+
+
+
+    
+
+
+  
+        // Load to count item in cart 
+         loadcart();
+       // Load to count item in Wishlist
+         loadwishlist();
+       // Load to count item in cart
+         function loadcart(){
+      
+             $.ajax({ 
+                method:'GET',
+                url:'/load-cart-data',
+                success:function(response){
+               if(response.count == 0) {
+                $('.countcart').html(''); 
+               }else{
+                $('.countcart').html(`<span class="pro-count blue  countcart">${response.count}</span>`);
+               }
+                }   
+             });  // Load to count item in cart  
+              
+              
+         }
+    
+    
+         // Load to count item in wishlist
+         function loadwishlist(){
+    
+            $.ajax({ 
+                method:'GET',
+                url:'/load-wishlist-data',
+                success:function(response){
+    
+         if(response.count == 0){
+          $('.countwishlist').html('');
+         }else{
+            $('.countwishlist').html(`<span class="pro-count blue  countwishlist">${response.count}</span>`);
+        }
+                }   
+             }); // Load to count item in wishlist
+         }
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $('.dropdown-menu .cart_list').on('click', function (event) {
             event.stopPropagation();

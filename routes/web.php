@@ -147,6 +147,7 @@ Route::controller(CartController::class)->group(function(){
 Route::controller(CheckoutController::class)->group(function(){
 
 Route::get('checkout', 'checkout');
+
 Route::post('placeorder' , 'placeorder');
 
 

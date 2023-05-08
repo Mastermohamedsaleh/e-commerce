@@ -18,16 +18,30 @@ class CheckoutController extends Controller
     public function checkout(){
          
 
-         
-        $items = Cart::where('user_id',Auth::id())->get();
-        
-          return view("frontend.cart.checkout",compact('items'));
+      // $product_id = $request->product_id;
+      // $cart = Cart::where('product_id',$product_id)->where('user_id',Auth::id())->first();   
+      // $cart->quantity = $request->qty;
+      // $cart->update();
+      $items = Cart::where('user_id',Auth::id())->get();
+      return view("frontend.cart.checkout",compact('items'));
     }
       
 
  
     public function  placeorder(Request $request){
-         
+    
+      $validated = $request->validate([
+         'first_name'=>'required',
+         'last_name'=>'required',
+         'email'=>'required|email',
+         'phone_number'=>'required|numeric',
+         'address_1'=>'required',
+         'address_2'=>'required',
+         'city'=>'required',
+         'state'=>'required',
+         'country'=>'required',
+         'pin_code'=>'required|numeric',
+      ]);
 
     //   Details Order
         $order = new Order();
