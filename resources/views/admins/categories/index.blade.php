@@ -19,12 +19,6 @@
       <th scope="col">#</th>
       <th scope="col">name</th>
       <th scope="col">slug</th>
-  
-      <th scope="col">status</th>
-      <th scope="col">popular</th>
-      <th scope="col">meta_title</th>
-      <th scope="col">meta_keywords</th>
-      <th scope="col">meta_discrip</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -39,11 +33,7 @@
       <td>{{ $category->name }}</td>
       <td>{{ $category->slug }}</td>
 
-      <td>{{ $category->status }}</td>
-      <td>{{ $category->popular }}</td>
-      <td>{{ $category->meta_title }}</td>
-      <td>{{ $category->meta_keywords }}</td>
-      <td>{{ $category->meta_discrip }}</td>
+ 
       <td>
 
       <a href="{{route('categories.edit',$category->id)}}" class="btn btn-success btn-sm" title="Edit" ><i class="fa fa-edit"></i></a>

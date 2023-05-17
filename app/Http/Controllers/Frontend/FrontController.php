@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\Cart;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -26,6 +27,7 @@ class FrontController extends Controller
 
         $categories =  Category::take(6)->get();
 
+ 
      
 
         return view('frontend.frontend',compact('products','new_products','categories'));
@@ -37,7 +39,7 @@ class FrontController extends Controller
                    
         if(Category::where('slug',$slug)->exists()){
             $category = Category::where('slug',$slug)->first();
-            $products = Product::where('category_id' , $category->id)->where('status' , '0')->get();
+            $products = Product::where('category_id' , $category->id)->get();
             return view('frontend.products.index',compact('category','products'));
         }else{
             return redirect('/');

@@ -6124,7 +6124,7 @@ h6.post-title {
 .mobile-menu-active .body-overlay-1 {
   opacity: 1;
   visibility: visible;
-}
+} 
 
 .main-wrapper {
   -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -6788,8 +6788,11 @@ span.fi-rs-apps {
   position: relative;
 }
 
+
+
 .main-menu > nav > ul > li ul.sub-menu li:last-child {
   margin-bottom: 0;
+
 }
 
 .main-menu > nav > ul > li ul.sub-menu li ul.level-menu {

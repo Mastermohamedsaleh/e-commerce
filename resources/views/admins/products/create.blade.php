@@ -87,12 +87,6 @@
 
 
 
-<div class="col-md-6 mt-2">
-
-<label for="">Status</label>
-<input type="checkbox" name="status">
-</div>
-
 
 <div class="col-md-6 mt-2">
 <label for="">Trending</label>
@@ -113,27 +107,6 @@
 </div>
 
 
-
-<div class="col-md-6 mt-2">
-
-<label for="">Meta Discrip</label>
-<input type="text" class="form-control" name="meta_description" placeholder="Meta Discrip"> 
- 
-
-</div>
-
-<div class="col-md-6 mt-2">
-<label for="">Meta Title</label>
-<input type="text" class="form-control" name="meta_title" placeholder="Meta Title">
-</div>
-
-
-<div class="col-md-6 mt-2">
-<label for="">Meta Keywords</label>
-<input type="text" class="form-control" name="meta_keywords" placeholder="Meta Keywords">
-</div>
-
-
 <div class="col-md-6 mt-2">
 <label for="">Original Price</label>
 <input type="number" min="1" class="form-control" name="original_price" placeholder="Original Price">
@@ -144,10 +117,6 @@
 <input type="number" min="1" class="form-control" name="selling_price" placeholder="Selling Price">
 </div>
 
-<div class="col-md-6 mt-2">
-<label for="">Tax</label>
-<input type="number" min="1" class="form-control" name="tax" placeholder="Tax">
-</div>
 
 <div class="col-md-6 mt-2">
 <label for="">Quantity</label>

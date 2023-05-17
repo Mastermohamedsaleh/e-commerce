@@ -22,9 +22,9 @@
     </div>
 @endif
 
-  
+<!-- placeorder -->
 
-<form action="{{url('placeorder')}}" method="post">
+<form action="{{route('make.payment')}}" method="get">
 @csrf
  
 <div class="row">
@@ -173,11 +173,12 @@
 
 
 <button type="submit"  class="btn btn-primary  w-100  text-center">Place Order | COD</button>
-<a href="{{url('payment',$total_price)}}"  class="btn btn-success mt-3  w-100  text-center">Payment</a>
+<!-- <a href="{{url('payment',$total_price)}}"  class="btn btn-success mt-3  w-100  text-center">Payment</a> -->
 
-<div class="mt-3">
-<div id="paypal-button-container"></div>
-</div>
+
+
+
+
 
 @else
 
@@ -228,12 +229,4 @@
 
 </div>
 
-
-
-@section('scripts')
-
-
-
-
-@endsection
 @include('frontend.layouts.footer')

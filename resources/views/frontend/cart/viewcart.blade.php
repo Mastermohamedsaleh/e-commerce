@@ -35,7 +35,7 @@
 
 
 
-
+<div class="product_data">
 
 <table class="table table-striped text-center shadow ">
   
@@ -55,24 +55,24 @@
  
     <?php  $total = 0 ?>
 
-    <!-- <form action="{{url('checkout')}}" method="post"> -->
-
-
-    <!-- @csrf -->
-
+   
     @foreach($items as $item)
+    
+
+   
     <tr>
+    
       <th scope="row"><img src="{{asset('uploads/products/'.$item->product->image)}}" style="width:50px"></th>
       <td>{{$item->product->name}}</td>
       <td>{{$item->product->selling_price}}</td>
-       <td> <input type="number" name="qty" id="product-quantity'"  max="10" min="1"  value="{{$item->quantity}}"> </td>
+       <td> <input type="number" name="qty" class="changeqty"  max="10" min="1"  value="{{$item->quantity}}"> </td>
         
       <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{$item->id}}" >Delete</button></td>
     </tr>
 
 
       
-       <!-- <input type="hidden"   name="product_id" value = "{{$item->product_id}}" > -->
+       <input type="hidden" class="prod_id"  name="prod_id" value = "{{$item->product_id}}" >
 
 
 
@@ -96,7 +96,13 @@
 
 </div>
 
-<!-- </form> -->
+
+
+
+
+
+</div>
+
 
 
 
@@ -166,6 +172,12 @@
 
 
 @section('scripts')
+
+
+
+
+
+
 
 @if(session('status'))
   <script>

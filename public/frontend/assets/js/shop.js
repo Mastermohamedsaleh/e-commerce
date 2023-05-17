@@ -137,6 +137,37 @@
 
     
 
+        //  change quantity product to user
+
+        
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$('.changeqty').click(function(e){ 
+e.preventDefault();
+
+
+var product_id = $(this).closest('.product_data').find('.prod_id').val();
+var qty = $(this).closest('.product_data').find('.changeqty').val();
+
+$.ajax({
+method : "POST",
+url : 'update-cart',
+data : {
+  'product_id' : product_id,
+  'product_qty' : qty
+},
+});
+
+
+ 
+});
+
+
+
 
 
 

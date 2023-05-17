@@ -52,15 +52,12 @@ class ProductController extends Controller
         $products->slug=$request->slug;
         $products->description=$request->description;
         $products->small_description=$request->small_description;
-        $products->status=$request->status  == True ? '1' : '0' ;
         $products ->trending=$request->trending == True ? '1' : '0' ;
         $products->original_price = $request->original_price;
         $products->selling_price = $request->selling_price;
-        $products->tax = $request->tax;
+
         $products->qty = $request->quantity;
-        $products->meta_title=$request->meta_title;
-        $products->meta_keywords= $request->meta_keywords;
-        $products->meta_description=$request->meta_description;
+      
     
         $products->save();
 
@@ -121,9 +118,7 @@ class ProductController extends Controller
         $product->selling_price = $request->selling_price;
         $product->tax = $request->tax;
         $product->qty = $request->quantity;
-        $product->meta_title=$request->meta_title;
-        $product->meta_keywords= $request->meta_keywords;
-        $product->meta_description=$request->meta_description;
+      
     
         $product->update();
 

@@ -24,12 +24,7 @@ return new class extends Migration
             $table->string('selling_price');
             $table->string('image');
             $table->string('qty');
-            $table->string('tax');
-            $table->tinyInteger('status');
             $table->tinyInteger('trending');
-            $table->mediumText('meta_title');
-            $table->mediumText('meta_keywords');
-            $table->mediumText('meta_description');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

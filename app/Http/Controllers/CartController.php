@@ -94,4 +94,30 @@ class CartController extends Controller
         return response()->json(['count'=>$countcount]);
       }
 
+
+
+    public function  updatecart(Request $request){
+         
+  
+      if(Auth::check()){
+               
+        if(Cart::where('product_id',$request->product_id)->where('user_id',Auth::id())->exists()  ){
+
+
+          $cart = Cart::where('product_id',$request->product_id)->where('user_id',Auth::id())->first();
+          $cart->quantity = $request->product_qty;
+          $cart->update();
+
+          // return response()->json(['status'=>'Quantity Update']);
+
+
+
+        } // exist or not
+
+      } // end check auth
+        
+        
+       
+    }
+
 }

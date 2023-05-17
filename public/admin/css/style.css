@@ -2,3 +2,9 @@
 .card  form input{
     border-bottom: 2px solid red;
 }
+
+
+.form-control {
+    border : 5px solid  #d63384;
+    margin: 10px;
+}

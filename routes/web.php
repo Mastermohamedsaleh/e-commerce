@@ -14,6 +14,8 @@ use App\Http\Controllers\Frontend\AccountController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\PayPalPaymentController;
 
 
 /*
@@ -138,6 +140,10 @@ Route::controller(CartController::class)->group(function(){
   Route::get('/load-cart-data', 'cartcount');
   // Delete Item From Cart
   Route::post('delete-in-cart/{id}', 'delete_item');
+
+ 
+  Route::post('update-cart', 'updatecart');
+   
 });
 
 
@@ -165,6 +171,18 @@ Route::get('canclepayment',[PaymentController::class,'cancle'])->name('canclepay
 
 
 
+
+
+
+
+
+Route::get('handle-payment', [PayPalPaymentController::class , 'handlePayment'])->name('make.payment');
+Route::get('cancel-payment', [PayPalPaymentController::class ,'paymentCancel'])->name('cancel.payment');
+Route::get('payment-success', [PayPalPaymentController::class ,'paymentSuccess'])->name('success.payment');
+
+
+
+
 // Review   
 
 
@@ -182,15 +200,14 @@ Route::middleware(['auth'])->group(function(){
 
 
 
-
 // Rating
-
+Route::middleware(['auth'])->group(function(){
 
 
 Route::post('rating',[RatingController::class ,  'add']);
 
 
-
+});
 
 Route::middleware(['auth','admincheck'])->group(function(){
     Route::get('/dashboard',function(){
@@ -202,6 +219,11 @@ Route::middleware(['auth','admincheck'])->group(function(){
     Route::resource('products',ProductController::class);
 
 });
+
+
+
+// settings
+Route::resource('settings',SettingController::class)->except(['create','store','show','destroy']);
 
 
  

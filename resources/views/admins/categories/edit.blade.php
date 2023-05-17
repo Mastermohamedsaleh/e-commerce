@@ -71,24 +71,6 @@
 
 
 
-<div class="col-md-6 mt-2">
-
-<label for="">Meta Discrip</label>
-<input type="text" class="form-control" name="meta_discrip"  value="{{ $category->meta_discrip }}"> 
- 
-
-</div>
-
-<div class="col-md-6 mt-2">
-<label for="">Meta Title</label>
-<input type="text" class="form-control" name="meta_title" value="{{ $category->meta_title }}">
-</div>
-
-
-<div class="col-md-6 mt-2">
-<label for="">Meta Keywords</label>
-<input type="text" class="form-control" name="meta_keywords" value="{{ $category->meta_keywords }}">
-</div>
 
 
 

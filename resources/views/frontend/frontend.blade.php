@@ -275,7 +275,7 @@
                     @foreach($categories as $category)
                         <div class="card-1">
                             <figure class=" img-hover-scale overflow-hidden">
-                                <a href="shop.html"><img src="assets/imgs/shop/category-thumb-1.jpg" alt=""></a>
+                                <a href="shop.html"><img src="{{asset('uploads/categories/'.$category->image)}}" alt=""></a>
                             </figure>
                             <h5><a href="{{url('category',$category->slug)}}">{{$category->name}}</a></h5>
                         </div>

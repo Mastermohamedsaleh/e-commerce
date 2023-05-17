@@ -14,15 +14,9 @@ class PaymentController extends Controller
 
     public function index($total_price){
 
+      $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET_KEY'));
 
-
-
-
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET_KEY'));
-
-
- 
-         
+       
      $cart_items =  Cart::where('user_id',Auth::id())->get();
           
 
@@ -83,3 +77,5 @@ class PaymentController extends Controller
 
 
 }
+
+

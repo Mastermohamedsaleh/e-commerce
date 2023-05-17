@@ -27,7 +27,7 @@
 
 
 
-<form action="{{route('categories.store')}}" method="post">
+<form action="{{route('categories.store')}}" method="post" enctype="multipart/form-data">
     @csrf
 <!-- Start Row -->
 <div class="row">
@@ -53,18 +53,6 @@
 
 
 
-<div class="col-md-6 mt-2">
-
-<label for="">Status</label>
-<input type="checkbox" name="status">
-</div>
-
-
-<div class="col-md-6 mt-2">
-<label for="">Popular</label>
-<input type="checkbox" name="popular">
-</div>
-
 
 <div class="col-md-6 mt-2">
 
@@ -74,24 +62,14 @@
 
 
 
-<div class="col-md-6 mt-2">
 
-<label for="">Meta Discrip</label>
-<input type="text" class="form-control" name="meta_discrip" placeholder="Meta Discrip"> 
- 
-
-</div>
-
-<div class="col-md-6 mt-2">
-<label for="">Meta Title</label>
-<input type="text" class="form-control" name="meta_title" placeholder="Meta Title">
-</div>
 
 
 <div class="col-md-6 mt-2">
-<label for="">Meta Keywords</label>
-<input type="text" class="form-control" name="meta_keywords" placeholder="Meta Keywords">
+<label for="">Image</label>
+<input type="file" class="form-control" name="image" >
 </div>
+
 
 
 

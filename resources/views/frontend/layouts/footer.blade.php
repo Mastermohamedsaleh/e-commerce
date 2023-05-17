@@ -32,26 +32,30 @@
                             <div class="logo logo-width-1 wow fadeIn animated">
                                 <a href="index.html"><img src="{{asset('frontend/assets/imgs/logo/logo.png')}}" alt="logo"></a>
                             </div>
+
+                            <?php    $settings = App\Models\Setting::all();   ?>
+
+                            @foreach($settings as $setting)
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                             <p class="wow fadeIn animated">
-                                <strong>Address: </strong>562 Wellington Road
+                                <strong>Address: </strong> {{$setting->address}}
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Phone: </strong>+1 0000-000-000
+                                <strong>Phone: </strong>+1 {{$setting->phone}}
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Email: </strong>contact@surfsidemedia.in
+                                <strong>Email: </strong>{{$setting->email}}
                             </p>
                             <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                             <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-twitter.svg')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-instagram.svg')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-pinterest.svg')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-youtube.svg')}}" alt=""></a>
+                                <a href="{{$setting->link_face}}" target = "_blank"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-facebook.svg')}}" alt=""></a>
+                                <a href="{{$setting->link_twi}}" target = "_blank"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-twitter.svg')}}" alt=""></a>
+                                <a href="{{$setting->link_ins}}" target = "_blank"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-instagram.svg')}}" alt="" ></a>
+                                <a href="{{$setting->link_pen}}" target = "_blank"><img src="{{asset('frontend/assets/imgs/theme/icons/icon-pinterest.svg')}}" alt="" ></a>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <div class="col-lg-2 col-md-3">
                         <h5 class="widget-title wow fadeIn animated">About</h5>
                         <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
@@ -65,11 +69,11 @@
                     <div class="col-lg-2  col-md-3">
                         <h5 class="widget-title wow fadeIn animated">My Account</h5>
                         <ul class="footer-list wow fadeIn animated">
-                            <li><a href="my-account.html">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>                            
-                            <li><a href="#">Order</a></li>
+                            <li><a href="{{url('my_account')}}">My Account</a></li>
+                            <li><a href="{{url('viewcart')}}">View Cart</a></li>
+                            <li><a href="{{url('wishlist')}}">My Wishlist</a></li>
+                            <li><a href="{{url('all_my_order')}}">Track My Order</a></li>                            
+                 
                         </ul>
                     </div>
                     <div class="col-lg-4 mob-center">
