@@ -172,11 +172,13 @@ Route::get('canclepayment',[PaymentController::class,'cancle'])->name('canclepay
 
 
 
+Route::post('pay', [PaymentController::class , 'index']);
 
 
 
 
-Route::get('handle-payment', [PayPalPaymentController::class , 'handlePayment'])->name('make.payment');
+
+Route::post('handle-payment', [PayPalPaymentController::class , 'handlePayment'])->name('make.payment');
 Route::get('cancel-payment', [PayPalPaymentController::class ,'paymentCancel'])->name('cancel.payment');
 Route::get('payment-success', [PayPalPaymentController::class ,'paymentSuccess'])->name('success.payment');
 

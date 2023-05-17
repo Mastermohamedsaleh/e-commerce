@@ -24,7 +24,7 @@
 
 <!-- placeorder -->
 
-<form action="{{route('make.payment')}}" method="get">
+<form action="{{url('pay')}}" method="post">
 @csrf
  
 <div class="row">
@@ -149,6 +149,10 @@
 <td>{{$item->product->selling_price}}</td>
 
 
+<input type="hidden" name = "name" value = "{{$item->product->name}}">
+<input type="hidden" name = "quantity" value = "{{$item->quantity}}">
+
+
 
 </tr> 
 
@@ -170,9 +174,10 @@
  <h6 class="text-primary">Total Price :  <span><?php echo $total_price; ?></span> </h6> 
 <hr>
 
-
+<input type="hidden" name = "total_price" value = "{{$total_price}}">
 
 <button type="submit"  class="btn btn-primary  w-100  text-center">Place Order | COD</button>
+<button type="submit"  class="btn btn-danger mt-3  w-100  text-center">Payment Now</button>
 <!-- <a href="{{url('payment',$total_price)}}"  class="btn btn-success mt-3  w-100  text-center">Payment</a> -->
 
 
