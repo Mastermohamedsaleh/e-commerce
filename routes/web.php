@@ -16,6 +16,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\verfiyController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 /*
@@ -41,7 +43,14 @@ define('PAGINATE_COUNT' , 1 );
 
 Auth::routes();
 
-Route::get('/', [frontController::class, 'index']);
+
+
+
+Route::get('/', [FrontController::class, 'index'])->middleware('two_factor');
+
+Route::resource('verifiy',verfiyController::class);
+
+
 
 
 Route::controller(FrontController::class)->group(function() { 
@@ -51,6 +60,8 @@ Route::controller(FrontController::class)->group(function() {
    
    
 });
+
+
 
 
 // Search product
@@ -173,14 +184,14 @@ Route::get('canclepayment',[PaymentController::class,'cancle'])->name('canclepay
 
 
 Route::post('pay', [PaymentController::class , 'index']);
-
-
-
-
-
-Route::post('handle-payment', [PayPalPaymentController::class , 'handlePayment'])->name('make.payment');
 Route::get('cancel-payment', [PayPalPaymentController::class ,'paymentCancel'])->name('cancel.payment');
 Route::get('payment-success', [PayPalPaymentController::class ,'paymentSuccess'])->name('success.payment');
+
+
+
+
+// Route::post('handle-payment', [PayPalPaymentController::class , 'handlePayment'])->name('make.payment');
+
 
 
 
@@ -219,7 +230,7 @@ Route::middleware(['auth','admincheck'])->group(function(){
 
     Route::resource('categories',CategoryController::class);
     Route::resource('products',ProductController::class);
-
+  
 });
 
 

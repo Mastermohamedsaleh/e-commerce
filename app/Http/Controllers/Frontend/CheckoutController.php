@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Order_item;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\checkoutRequest;
 
 
 class CheckoutController extends Controller
@@ -28,21 +29,8 @@ class CheckoutController extends Controller
       
 
  
-    public function  placeorder(Request $request){
+    public function  placeorder(checkoutRequest $request){
     
-      $validated = $request->validate([
-         'first_name'=>'required',
-         'last_name'=>'required',
-         'email'=>'required|email',
-         'phone_number'=>'required|numeric',
-         'address_1'=>'required',
-         'address_2'=>'required',
-         'city'=>'required',
-         'state'=>'required',
-         'country'=>'required',
-         'pin_code'=>'required|numeric',
-      ]);
-
     //   Details Order
         $order = new Order();
         $order->user_id = Auth::id();

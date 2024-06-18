@@ -33,7 +33,7 @@
                                 <a href="index.html"><img src="{{asset('frontend/assets/imgs/logo/logo.png')}}" alt="logo"></a>
                             </div>
 
-                            <?php    $settings = App\Models\Setting::all();   ?>
+                            <?php  $settings = App\Models\Setting::all();  ?>
 
                             @foreach($settings as $setting)
                             <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
@@ -56,6 +56,8 @@
                         </div>
                     </div>
                     @endforeach
+
+                   
                     <div class="col-lg-2 col-md-3">
                         <h5 class="widget-title wow fadeIn animated">About</h5>
                         <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">

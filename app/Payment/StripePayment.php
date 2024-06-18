@@ -33,12 +33,13 @@ class StripePayment implements PaymentInterface{
                         'product_data' => [
                           'name' =>  $item->product->name,
                         ],
-                        'unit_amount' => $total_price,
+                        'unit_amount' => $total_price * 100,
                       ],
                       'quantity' => $item->quantity,
                     ];
 
      }
+    
          
         $checkout_session = $stripe->checkout->sessions->create([
             'line_items' =>  $lineitems,

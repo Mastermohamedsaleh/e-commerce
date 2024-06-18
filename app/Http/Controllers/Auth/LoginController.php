@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -42,6 +42,8 @@ class LoginController extends Controller
         }
         elseif(Auth::user()->user_type == '0') // Normal or Default User Login
         {
+            $user = User::where('email',$this->input('email'))->first();
+            $user->generatecode();
             return redirect('/');
         }
     }

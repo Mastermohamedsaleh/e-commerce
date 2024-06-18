@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,18 +20,11 @@ class FrontController extends Controller
      
     public function index(){
 
-
         $products = Product::where('trending' , 1)->take(8)->get(); 
-
-
         $new_products =  Product::orderBy('id', 'DESC')->take(8)->get();
-
         $categories =  Category::take(6)->get();
-
- 
-     
-
         return view('frontend.frontend',compact('products','new_products','categories'));
+
     } 
 
 
@@ -111,6 +105,11 @@ class FrontController extends Controller
             return redirect()->back();
         }
     }
+
+
+
+
+
 
 
 

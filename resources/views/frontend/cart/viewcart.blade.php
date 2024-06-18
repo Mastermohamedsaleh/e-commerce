@@ -154,7 +154,7 @@
 
 
 
-<a  href="{{url('checkout')}}" class="btn btn-outline-success">Proceed to Checkout</a>
+<a  href="{{url('checkout')}}" class="btn btn-outline-success ">Proceed to Checkout</a>
 
  
 

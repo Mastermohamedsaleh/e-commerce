@@ -1,13 +1,10 @@
-@extends('layouts.frontend')
 
 
-@section('title')
+<!-- Start navbar -->
 
-E-Shop
+@include('frontend.layouts.nav')
 
-@endsection
-
-
+<!-- end Slider -->
 
 
 
@@ -15,11 +12,6 @@ E-Shop
 
 
 
-<!-- Start navbar -->
-
-@include('frontend.nav')
-
-<!-- end Slider -->
 
 
 <div class="alert alert-success">Done Payment Successfully</div>
@@ -28,3 +20,7 @@ E-Shop
 
 
 @endsection
+
+
+
+

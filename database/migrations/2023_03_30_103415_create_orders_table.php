@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('pincode');
             $table->string('total_price');
+            $table->string('payment_mode');
             $table->tinyInteger('status')->default('0');
             $table->string('massage')->nullable();
             $table->string('tracking_no');
